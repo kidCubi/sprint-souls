@@ -1,9 +1,9 @@
-# sprint-souls
+<img width="908" height="352" alt="banner" src="https://github.com/user-attachments/assets/5a1a0bf0-c164-4c5b-9a6f-2dc26f511252" />
 
-A Dark Souls style fullscreen banner that appears the first time you log in,
-unlock, or wake your Mac after a new sprint has started. The screen dims, a
-letterbox band sweeps across the center, and gold serif text slowly expands —
-then it all fades away. Click or press any key to dismiss early.
+A Dark Souls style banner that appears the first time you log in,
+unlock, or wake your Mac after a new sprint has started. A relaxing and gentle way to start the sprint.
+
+> Disclaimer: I didn't write a line of code for that. This is a pure slop project
 
 ## How it works
 
