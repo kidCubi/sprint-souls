@@ -68,7 +68,7 @@ struct Config: Codable {
         return Config(
             anchor: dateFormat.string(from: anchorDate),
             intervalDays: 14,
-            title: "SPRINT COMMENCED",
+            title: "SPRINT {n} STARTED",
             subtitle: nil,
             soundPath: nil
         )

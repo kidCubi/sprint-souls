@@ -23,4 +23,12 @@ struct Scheduler {
         guard let current = currentBoundary(asOf: now) else { return anchor }
         return Calendar.current.date(byAdding: .day, value: intervalDays, to: current) ?? current
     }
+
+    /// 1-based number of the sprint containing `now` (sprint 1 starts at the
+    /// anchor). Before the anchor this is 1, the upcoming first sprint.
+    func sprintNumber(asOf now: Date) -> Int {
+        guard let boundary = currentBoundary(asOf: now), intervalDays > 0 else { return 1 }
+        let days = Calendar.current.dateComponents([.day], from: anchor, to: boundary).day ?? 0
+        return days / intervalDays + 1
+    }
 }

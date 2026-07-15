@@ -60,8 +60,8 @@ curl -fsSL https://raw.githubusercontent.com/kidCubi/sprint-souls/main/uninstall
 {
   "anchor": "2026-07-16T08:00:00",
   "intervalDays": 14,
-  "title": "SPRINT COMMENCED",
-  "subtitle": "Sprint 42 — go forth",
+  "title": "SPRINT {n} STARTED",
+  "subtitle": "Go forth",
   "soundPath": "/path/to/bonfire.aiff"
 }
 ```
@@ -69,8 +69,9 @@ curl -fsSL https://raw.githubusercontent.com/kidCubi/sprint-souls/main/uninstall
 - `anchor` — date and time of any sprint start, local time. Every
   `intervalDays` from this point is a new sprint.
 - `intervalDays` — 14 for a two-week cadence.
-- `title` — the big gold text.
-- `subtitle` (optional) — smaller line under the title.
+- `title` — the big gold text. `{n}` is replaced with the current sprint
+  number (sprint 1 starts at the anchor).
+- `subtitle` (optional) — smaller line under the title; `{n}` works here too.
 - `soundPath` (optional) — sound file to play with the banner (`~` is
   expanded). If omitted, a file named `sound.mp3` / `sound.m4a` / `sound.aiff` /
   `sound.wav` dropped into `~/.config/sprint-souls/` is picked up automatically.

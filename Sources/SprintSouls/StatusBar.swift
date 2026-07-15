@@ -118,7 +118,7 @@ final class SettingsWindowController: NSObject {
         intervalStepper.target = self
         intervalStepper.action = #selector(stepperChanged)
 
-        titleField.placeholderString = "SPRINT COMMENCED"
+        titleField.placeholderString = "SPRINT {n} STARTED"
         titleField.widthAnchor.constraint(equalToConstant: 220).isActive = true
 
         let daysLabel = NSTextField(labelWithString: "days")
@@ -126,10 +126,15 @@ final class SettingsWindowController: NSObject {
         intervalRow.orientation = .horizontal
         intervalRow.spacing = 4
 
+        let titleHint = NSTextField(labelWithString: "{n} is replaced with the sprint number")
+        titleHint.font = .systemFont(ofSize: NSFont.smallSystemFontSize)
+        titleHint.textColor = .secondaryLabelColor
+
         let grid = NSGridView(views: [
             [NSTextField(labelWithString: "Sprint starts:"), datePicker],
             [NSTextField(labelWithString: "Repeat every:"), intervalRow],
             [NSTextField(labelWithString: "Banner text:"), titleField],
+            [NSGridCell.emptyContentView, titleHint],
         ])
         grid.rowSpacing = 12
         grid.column(at: 0).xPlacement = .trailing
@@ -178,7 +183,7 @@ final class SettingsWindowController: NSObject {
         config.anchor = Config.dateFormat.string(from: datePicker.dateValue)
         config.intervalDays = max(1, min(365, intervalField.integerValue))
         let title = titleField.stringValue.trimmingCharacters(in: .whitespaces)
-        config.title = title.isEmpty ? "SPRINT COMMENCED" : title
+        config.title = title.isEmpty ? "SPRINT {n} STARTED" : title
         config.save()
 
         window?.close()

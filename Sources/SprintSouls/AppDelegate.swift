@@ -84,9 +84,17 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     private func show(config: Config, completion: @escaping () -> Void) {
+        // "{n}" in the banner text stands for the current sprint number.
+        var number = 1
+        if let anchorDate = config.anchorDate {
+            number = Scheduler(anchor: anchorDate, intervalDays: config.intervalDays).sprintNumber(asOf: Date())
+        }
+        let title = config.title.replacingOccurrences(of: "{n}", with: String(number))
+        let subtitle = config.subtitle?.replacingOccurrences(of: "{n}", with: String(number))
+
         let animator = AnimationController()
         self.animator = animator
-        animator.play(title: config.title, subtitle: config.subtitle, soundPath: config.resolvedSoundPath) { [weak self] in
+        animator.play(title: title, subtitle: subtitle, soundPath: config.resolvedSoundPath) { [weak self] in
             self?.animator = nil
             completion()
         }
