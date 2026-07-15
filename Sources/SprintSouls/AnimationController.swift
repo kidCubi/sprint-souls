@@ -22,6 +22,8 @@ final class AnimationController {
     // #61211F
     static let titleColor = NSColor(calibratedRed: 0x61 / 255.0, green: 0x21 / 255.0, blue: 0x1F / 255.0, alpha: 1.0)
     static let ruleColor = NSColor.white.withAlphaComponent(0.12)
+    /// Vertical stretch applied to the banner text for the tall engraved look.
+    static let verticalStretch: CGFloat = 1.3
 
     func play(title: String, subtitle: String?, soundPath: String?, completion: @escaping () -> Void) {
         self.completion = completion
@@ -166,8 +168,10 @@ final class AnimationController {
         let textSize = attributed.size()
 
         let padding = fontSize * 0.5
-        let imageSize = NSSize(width: textSize.width + padding * 2, height: textSize.height + padding * 2)
+        let stretch = AnimationController.verticalStretch
+        let imageSize = NSSize(width: textSize.width + padding * 2, height: (textSize.height + padding * 2) * stretch)
         let image = NSImage(size: imageSize, flipped: false) { _ in
+            NSGraphicsContext.current?.cgContext.scaleBy(x: 1, y: stretch)
             attributed.draw(at: NSPoint(x: padding, y: padding))
             return true
         }
