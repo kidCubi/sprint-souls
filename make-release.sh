@@ -14,7 +14,7 @@ swift build -c release --arch arm64 --arch x86_64
 rm -rf "dist/$PKG"
 mkdir -p "dist/$PKG"
 cp .build/apple/Products/Release/SprintSouls "dist/$PKG/sprint-souls"
-cp icon.png uninstall.sh README.md "dist/$PKG/"
+cp icon.png sound.mp3 uninstall.sh README.md "dist/$PKG/"
 cp packaging/install-prebuilt.sh "dist/$PKG/install.sh"
 chmod +x "dist/$PKG/install.sh" "dist/$PKG/uninstall.sh" "dist/$PKG/sprint-souls"
 

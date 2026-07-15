@@ -74,7 +74,9 @@ curl -fsSL https://raw.githubusercontent.com/kidCubi/sprint-souls/main/uninstall
 - `subtitle` (optional) — smaller line under the title; `{n}` works here too.
 - `soundPath` (optional) — sound file to play with the banner (`~` is
   expanded). If omitted, a file named `sound.mp3` / `sound.m4a` / `sound.aiff` /
-  `sound.wav` dropped into `~/.config/sprint-souls/` is picked up automatically.
+  `sound.wav` dropped into `~/.config/sprint-souls/` is picked up
+  automatically, and failing that the default `sound.mp3` shipped with the
+  install is used.
 
 Config is re-read on every trigger, so edits apply without restarting the
 agent. To force the banner to replay for the current sprint, delete

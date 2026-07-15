@@ -18,14 +18,21 @@ struct Config: Codable {
     var anchorDate: Date? { Config.dateFormat.date(from: anchor) }
 
     /// Explicit soundPath wins; otherwise any "sound.*" audio file dropped
-    /// into the config directory is used.
+    /// into the config directory is used, then the default one shipped next
+    /// to the binary by install.sh.
     var resolvedSoundPath: String? {
         if let soundPath, !soundPath.isEmpty {
             return (soundPath as NSString).expandingTildeInPath
         }
-        for ext in ["mp3", "m4a", "aiff", "aif", "wav", "caf"] {
-            let candidate = Config.directory.appendingPathComponent("sound.\(ext)").path
-            if FileManager.default.fileExists(atPath: candidate) { return candidate }
+        var directories = [Config.directory]
+        if let executable = Bundle.main.executableURL {
+            directories.append(executable.deletingLastPathComponent())
+        }
+        for directory in directories {
+            for ext in ["mp3", "m4a", "aiff", "aif", "wav", "caf"] {
+                let candidate = directory.appendingPathComponent("sound.\(ext)").path
+                if FileManager.default.fileExists(atPath: candidate) { return candidate }
+            }
         }
         return nil
     }

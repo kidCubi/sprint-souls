@@ -18,6 +18,7 @@ launchctl bootout "gui/$(id -u)/$LABEL" 2>/dev/null || true
 cp sprint-souls "$BIN"
 chmod +x "$BIN"
 [ -f icon.png ] && cp icon.png "$INSTALL_DIR/icon.png"
+[ -f sound.mp3 ] && cp sound.mp3 "$INSTALL_DIR/sound.mp3"
 # Clear the quarantine flag browsers add so Gatekeeper doesn't block the agent.
 xattr -d com.apple.quarantine "$BIN" 2>/dev/null || true
 

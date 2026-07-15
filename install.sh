@@ -19,6 +19,7 @@ mkdir -p "$INSTALL_DIR"
 launchctl bootout "gui/$(id -u)/$LABEL" 2>/dev/null || true
 cp .build/release/SprintSouls "$BIN"
 [ -f icon.png ] && cp icon.png "$INSTALL_DIR/icon.png"
+[ -f sound.mp3 ] && cp sound.mp3 "$INSTALL_DIR/sound.mp3"
 
 echo "Writing LaunchAgent $PLIST"
 mkdir -p "$HOME/Library/LaunchAgents"
