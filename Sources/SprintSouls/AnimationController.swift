@@ -23,7 +23,7 @@ final class AnimationController {
     static let titleColor = NSColor(calibratedRed: 0x61 / 255.0, green: 0x21 / 255.0, blue: 0x1F / 255.0, alpha: 1.0)
     static let ruleColor = NSColor.white.withAlphaComponent(0.12)
     /// Vertical stretch applied to the banner text for the tall engraved look.
-    static let verticalStretch: CGFloat = 1.3
+    static let verticalStretch: CGFloat = 1.2
 
     func play(title: String, subtitle: String?, soundPath: String?, completion: @escaping () -> Void) {
         self.completion = completion
