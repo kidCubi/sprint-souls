@@ -23,11 +23,29 @@ A flame icon in the menu bar shows the next sprint date and offers:
 - **Play Animation Now** — preview without affecting the real schedule.
 - **Quit Sprint Souls** — stops the agent until next login.
 
-## Install / uninstall
+## Install
+
+The quick way (downloads the latest prebuilt release, no toolchain needed):
 
 ```sh
+curl -fsSL https://raw.githubusercontent.com/kidCubi/sprint-souls/main/get.sh | bash
+```
+
+Or grab the `.tar.gz` from the [releases page](https://github.com/kidCubi/sprint-souls/releases),
+extract it, and run `./install.sh` inside.
+
+From source (requires the Xcode Command Line Tools):
+
+```sh
+git clone https://github.com/kidCubi/sprint-souls.git
+cd sprint-souls
 ./install.sh     # builds, installs to ~/.local/share/sprint-souls, loads the LaunchAgent
-./uninstall.sh
+```
+
+To uninstall, run `./uninstall.sh` (bundled in the release tarball too):
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/kidCubi/sprint-souls/main/uninstall.sh | bash
 ```
 
 ## Preview
